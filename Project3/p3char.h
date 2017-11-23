@@ -29,6 +29,7 @@ public:
     BookCharacter(string read[]);
     unsigned long getKey() const;
     char getCharacter() const;
+    void setCharacter(char lookedUpCharacter);
 };
 
 #endif /* p3char_h */

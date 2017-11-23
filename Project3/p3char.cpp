@@ -49,3 +49,7 @@ unsigned long BookCharacter::getKey() const {
 char BookCharacter::getCharacter() const {
     return character;
 }
+
+void BookCharacter::setCharacter(char lookedUpCharacter) {
+    character = lookedUpCharacter;
+}

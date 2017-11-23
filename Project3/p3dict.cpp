@@ -39,16 +39,38 @@ void Dictionary::insert(const BookCharacter& newCharacter) {
     int i = 1;
     while((*(characters+hash)).getKey() != 0) {
         hash = probing(hash, i);
+        i++;
     }
         
     *(characters+hash) = newCharacter;
 }
 
-void Dictionary::deleteItem() {
+void Dictionary::deleteItem(const BookCharacter& deleteCharacter) {
+    unsigned long hash = hashing(deleteCharacter.getKey());
     
+    int i = 1;
+    while((*(characters+hash)).getKey() != 0) {
+        if((*(characters+hash)).getKey() == deleteCharacter.getKey()) {
+            BookCharacter empty;
+            *(characters+hash) = empty;
+        }
+        
+        hash = probing(hash, i);
+        i++;
+    }
 }
 
-void Dictionary::lookup(const BookCharacter& lookUp) const {
-
+char Dictionary::lookup(const BookCharacter& lookUpCharacter) const {
+    unsigned long hash = hashing(lookUpCharacter.getKey());
+    
+    int i = 1;
+    while((*(characters+hash)).getKey() != 0) {
+        if((*(characters+hash)).getKey() == lookUpCharacter.getKey())
+            return (*(characters+hash)).getCharacter();
+        
+        hash = probing(hash, i);
+        i++;
+    }
+    return '\0';
 }
 
