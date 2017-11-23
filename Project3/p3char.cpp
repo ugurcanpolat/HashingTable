@@ -4,7 +4,7 @@
  * Date: 01.12.2017
  * * * * * * * * * * * * * * * * * *
  
- Compile command: g++ -std=c++11 150140117.cpp -o project2
+ Compile command: g++ -std=c++11 150140117.cpp -o project3
  
  * * * * * * * * * * * * * * * * * */
 
@@ -13,7 +13,13 @@
 
 using namespace std;
 
-BookCharacter::BookCharacter(string read[]){
+BookCharacter::BookCharacter() {
+    pageNo = lineNo = index = -1;
+    character = '\0';
+    key = 0;
+}
+
+BookCharacter::BookCharacter(string read[]) {
     pageNo = stoi(read[0]);
     lineNo = stoi(read[1]);
     index = stoi(read[2]);
@@ -34,4 +40,12 @@ int BookCharacter::determineNumberOfDigits(int number) const {
         numberOfDigits++;
     }
     return numberOfDigits;
+}
+
+unsigned long BookCharacter::getKey() const {
+    return key;
+}
+
+char BookCharacter::getCharacter() const {
+    return character;
 }

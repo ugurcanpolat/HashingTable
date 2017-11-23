@@ -4,7 +4,7 @@
  * Date: 01.12.2017
  * * * * * * * * * * * * * * * * * *
  
- Compile command: g++ -std=c++11 150140117.cpp -o project2
+ Compile command: g++ -std=c++11 150140117.cpp -o project3
  
  * * * * * * * * * * * * * * * * * */
 
@@ -25,7 +25,10 @@ private:
     unsigned long key;
     int determineNumberOfDigits(int number) const;
 public:
+    BookCharacter();
     BookCharacter(string read[]);
+    unsigned long getKey() const;
+    char getCharacter() const;
 };
 
 #endif /* p3char_h */

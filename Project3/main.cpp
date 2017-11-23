@@ -4,7 +4,7 @@
  * Date: 01.12.2017
  * * * * * * * * * * * * * * * * * *
  
- Compile command: g++ -std=c++11 150140117.cpp -o project2
+ Compile command: g++ -std=c++11 150140117.cpp -o project3
  
  * * * * * * * * * * * * * * * * * */
 
@@ -15,6 +15,8 @@
 #include <string> // string
 
 #include "p3char.cpp"
+#include "p3dict.cpp"
+#include "p3list.cpp"
 
 using namespace std;
 
@@ -27,6 +29,7 @@ int main() {
     }
     
     string line;
+    Dictionary dictionary;
     
     while(!input.eof()) {
         getline(input, line); // Read the line
@@ -47,7 +50,7 @@ int main() {
         
         // Create a new BookCharacter and insert it to
         BookCharacter new_book_character(read);
-        
+        dictionary.insert(new_book_character);
     }
     
     input.close();
