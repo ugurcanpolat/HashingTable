@@ -22,7 +22,6 @@ private:
     vector<BookCharacter> characters;
 public:
     List();
-    ~List();
     void insert(const BookCharacter& newCharacter);
     void deleteItem();
     void lookup() const;

@@ -27,7 +27,7 @@ class Dictionary {
     ~Dictionary();
     void insert(const BookCharacter& newCharacter);
     void deleteItem();
-    void lookup() const;
+    void lookup(const BookCharacter& lookUp) const;
 };
 
 #endif /* p3dict_h */

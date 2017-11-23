@@ -9,3 +9,19 @@
  * * * * * * * * * * * * * * * * * */
 
 #include "p3list.h"
+
+List::List() {
+    characters.resize(SIZE);
+}
+
+void List::insert(const BookCharacter& newCharacter) {
+    characters.push_back(newCharacter);
+}
+
+void List::deleteItem() {
+    
+}
+
+void List::lookup() const {
+    
+}

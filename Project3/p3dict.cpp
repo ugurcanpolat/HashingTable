@@ -43,3 +43,12 @@ void Dictionary::insert(const BookCharacter& newCharacter) {
         
     *(characters+hash) = newCharacter;
 }
+
+void Dictionary::deleteItem() {
+    
+}
+
+void Dictionary::lookup(const BookCharacter& lookUp) const {
+
+}
+
