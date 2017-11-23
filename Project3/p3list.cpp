@@ -18,10 +18,19 @@ void List::insert(const BookCharacter& newCharacter) {
     characters.push_back(newCharacter);
 }
 
-void List::deleteItem() {
-    
+void List::deleteItem(const BookCharacter& deleteCharacter) {
+    for(int counter = 0; counter < characters.capacity(); counter++) {
+        if(characters[counter].getKey() == deleteCharacter.getKey()) {
+            BookCharacter empty;
+            characters[counter] = empty;
+        }
+    }
 }
 
-void List::lookup() const {
-    
+char List::lookup(const BookCharacter& lookUpCharacter) const {
+    for(int counter = 0; counter < characters.capacity(); counter++) {
+        if(characters[counter].getKey() == lookUpCharacter.getKey())
+            return characters[counter].getCharacter();
+    }
+    return '\0';
 }

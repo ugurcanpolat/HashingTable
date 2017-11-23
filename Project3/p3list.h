@@ -23,8 +23,8 @@ private:
 public:
     List();
     void insert(const BookCharacter& newCharacter);
-    void deleteItem();
-    void lookup() const;
+    void deleteItem(const BookCharacter& deleteCharacter);
+    char lookup(const BookCharacter& lookUpCharacter) const;
 };
 
 #endif /* p3list_h */
