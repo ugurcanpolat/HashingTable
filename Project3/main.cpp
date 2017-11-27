@@ -35,6 +35,13 @@ int main() {
     Dictionary dictionary;
     List list;
     
+    int numberOfCollisions = 0;
+    int numberOfItems = 1;
+    float avgCollisionsFor3 = 0.0;
+    float avgCollisionsFor4 = 0.0;
+    float avgCollisionsFor5 = 0.0;
+    float avgCollisionsOverall = 0.0;
+    
     while(!inputFile.eof()) {
         getline(inputFile, line); // Read the line
         
@@ -51,13 +58,26 @@ int main() {
         getline(linestream, read[1], '\t');
         getline(linestream, read[2], '\t');
         linestream >> read[3];
+        numberOfItems++;
         
         // Create a new BookCharacter
         BookCharacter new_book_character(read);
-        dictionary.insert(new_book_character);
+        numberOfCollisions += dictionary.insert(new_book_character);
+        
+        if(numberOfItems == 1000)
+            avgCollisionsFor3 = static_cast<float>(static_cast<float>(numberOfCollisions) / static_cast<float>(numberOfItems));
+        
+        if(numberOfItems == 10000)
+            avgCollisionsFor4 = static_cast<float>(static_cast<float>(numberOfCollisions) / static_cast<float>(numberOfItems));
+        
+        if(numberOfItems == 100000)
+            avgCollisionsFor5 = static_cast<float>(static_cast<float>(numberOfCollisions) / static_cast<float>(numberOfItems));
+        
         list.insert(new_book_character);
     }
     inputFile.close();
+    
+    avgCollisionsOverall = static_cast<float>(static_cast<float>(numberOfCollisions) / static_cast<float>(numberOfItems));
     
     ifstream lookupFile("ds-set-lookup.txt", ifstream::in); // Read
     
@@ -100,6 +120,21 @@ int main() {
     writeToOutputFile("ds-set-output-dict.txt", lookupDictionary);
     writeToOutputFile("ds-set-output-list.txt", lookupList);
     
+    cout << endl << "\tDICTIONARY" << endl;
+    cout << setprecision(5) << "\tInsertion finished after " << " seconds" << endl << endl;
+    cout << setw(46) << left << "\tAverage number of collisions (first 1,000)" << "|";
+    cout << setprecision(5) << setw(7) << right << avgCollisionsFor3 << endl;
+    cout << setw(46) << left << "\tAverage number of collisions (first 10,000)" << "|";
+    cout << setw(7) << right << avgCollisionsFor4 << endl;
+    cout << setw(46) << left << "\tAverage number of collisions (first 100,000)" << "|";
+    cout << setw(7) << right << avgCollisionsFor5 << endl;
+    cout << setw(46) << left << "\tAverage number of collisions (overall)" << "|";
+    cout << setw(7) << right <<avgCollisionsOverall << endl;
+    cout << "\tLookup finished after " << " seconds." << endl;
+    
+    cout << endl << "\tLIST" << endl;
+    cout << "\tInsertion finished after " << " seconds" << endl;
+    cout << "\tLookup finished after " << " seconds." << endl << endl;
     return 0;
 }
 

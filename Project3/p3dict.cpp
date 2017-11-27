@@ -33,7 +33,7 @@ unsigned long Dictionary::probing(unsigned long hash, int i) const {
     return nHash;
 }
 
-void Dictionary::insert(const BookCharacter& newCharacter) {
+int Dictionary::insert(const BookCharacter& newCharacter) {
     unsigned long hash = hashing(newCharacter.getKey());
     
     int i = 1;
@@ -43,6 +43,7 @@ void Dictionary::insert(const BookCharacter& newCharacter) {
     }
         
     *(characters+hash) = newCharacter;
+    return i-1;
 }
 
 void Dictionary::deleteItem(const BookCharacter& deleteCharacter) {
