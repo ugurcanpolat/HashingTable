@@ -4,7 +4,7 @@
  * Date: 01.12.2017
  * * * * * * * * * * * * * * * * * *
  
- Compile command: g++ -std=c++11 150140117.cpp -o project3
+ Compile command: g++ -std=c++11 main.cpp -o proj3
  
  * * * * * * * * * * * * * * * * * */
 
@@ -13,7 +13,7 @@
 
 #define SIZE 131071
 
-#include <cmath>
+#include <cmath> // modf
 
 using namespace std;
 
