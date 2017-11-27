@@ -13,6 +13,7 @@
 #include <fstream> // ifstream
 #include <sstream> // stringstream
 #include <string> // string
+#include <vector>
 
 #include "p3char.cpp"
 #include "p3dict.cpp"
@@ -62,9 +63,9 @@ int main() {
         cout << endl << "Error opening lookup file." << endl << endl;
         return 0;
     }
-    
-    Dictionary lookupDictionary;
-    List lookupList;
+
+    vector<BookCharacter> lookupDictionary;
+    vector<BookCharacter> lookupList;
     
     while(!lookupFile.eof()) {
         getline(lookupFile, line); // Read the line
@@ -75,7 +76,7 @@ int main() {
         // Create stringstream to parse with ','
         stringstream linestream(line);
         
-        string read[4];
+        string read[3];
         
         // Parse the line
         getline(linestream, read[0], '\t');
@@ -86,14 +87,28 @@ int main() {
         BookCharacter new_book_character(read);
         
         char chr = dictionary.lookup(new_book_character);
-        read[3] = chr;
-        lookupDictionary.insert(new_book_character);
-        
-        chr = list.lookup(new_book_character);
-        read[3] = chr;
-        lookupList.insert(new_book_character);
+        new_book_character.setCharacter(chr);
+        lookupDictionary.push_back(new_book_character);
     }
     lookupFile.close();
+    
+    ofstream output("ds-set-output-dict.txt", ofstream::out); // Write
+    
+    if (!output.is_open()) {
+        cout << endl << "Error opening output file." << endl << endl;
+        return 0;
+    }
+    
+    // Write the sorted segment values
+    for (int counter = 0; counter < lookupDictionary.size(); counter++) {
+        output << lookupDictionary[counter].getPageNo() << '\t';
+        output << lookupDictionary[counter].getLineNo() << '\t';
+        output << lookupDictionary[counter].getIndex()<< '\t';
+        output << lookupDictionary[counter].getCharacter() << endl;
+    }
+    
+    // Close the output file since it is no longer needed
+    output.close();
     
     return 0;
 }

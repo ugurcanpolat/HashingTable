@@ -23,11 +23,13 @@ private:
     int index;
     char character;
     unsigned long key;
-    int determineNumberOfDigits(int number) const;
 public:
     BookCharacter();
     BookCharacter(string read[]);
     unsigned long getKey() const;
+    int getPageNo() const;
+    int getLineNo() const;
+    int getIndex() const;
     char getCharacter() const;
     void setCharacter(char lookedUpCharacter);
 };

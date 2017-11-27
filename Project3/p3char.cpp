@@ -9,7 +9,6 @@
  * * * * * * * * * * * * * * * * * */
 
 #include "p3char.h"
-#include <cmath>
 
 using namespace std;
 
@@ -26,24 +25,25 @@ BookCharacter::BookCharacter(string read[]) {
     character = read[3][0];
     
     key = index;
-    key += lineNo*pow(10,determineNumberOfDigits(static_cast<int>(key)));
-    key += pageNo*pow(10,determineNumberOfDigits(static_cast<int>(key)));
-}
-
-int BookCharacter::determineNumberOfDigits(int number) const {
-    int numberOfDigits = 0;
-    
-    float fNumber = number;
-    
-    while(fNumber >= 1) {
-        fNumber /= 10;
-        numberOfDigits++;
-    }
-    return numberOfDigits;
+    key += lineNo*100;
+    key += pageNo*10000;
+    read[0] = "s";
 }
 
 unsigned long BookCharacter::getKey() const {
     return key;
+}
+
+int BookCharacter::getPageNo() const {
+    return pageNo;
+}
+
+int BookCharacter::getLineNo() const {
+    return lineNo;
+}
+
+int BookCharacter::getIndex() const {
+    return index;
 }
 
 char BookCharacter::getCharacter() const {
