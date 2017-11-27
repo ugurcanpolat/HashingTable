@@ -11,7 +11,6 @@
 #ifndef p3char_h
 #define p3char_h
 
-#include <iostream>
 #include <string>
 
 using namespace std;
