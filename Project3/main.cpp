@@ -195,12 +195,32 @@ void writeToOutputFile(string fileName, vector<BookCharacter> data) {
         return;
     }
     
-    // Write the sorted segment values
+    int currentPage = data[0].getPageNo();
+    int currentLine = data[0].getLineNo();
+    
+    // Write the sorted character values
     for (int counter = 0; counter < data.size(); counter++) {
-        output << data[counter].getPageNo() << '\t';
-        output << data[counter].getLineNo() << '\t';
-        output << data[counter].getIndex()<< '\t';
-        output << data[counter].getCharacter() << endl;
+        int pageNo = data[counter].getPageNo();
+        int lineNo = data[counter].getLineNo();
+        char character =  data[counter].getCharacter();
+        
+        // If page is different go to new line
+        if (currentPage != pageNo) {
+            currentPage = pageNo; // Update page no
+            currentLine = lineNo; // Update line no
+            output << endl;
+        }
+        
+        // If line is different go to new line
+        else if(currentLine != lineNo) {
+            currentLine = lineNo; // Update line no
+            output << endl;
+        }
+        
+        if(character == '\0') // Space characters not changed during lookup
+            output << ' '; // Write space
+        else
+            output << character; // Write the character
     }
     
     // Close the output file since it is no longer needed
