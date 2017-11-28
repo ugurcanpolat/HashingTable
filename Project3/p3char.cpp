@@ -13,17 +13,19 @@
 using namespace std;
 
 BookCharacter::BookCharacter() {
+    // Create an empty BookCharacter object
     pageNo = lineNo = index = -1;
     character = '\0';
     key = 0;
 }
 
 BookCharacter::BookCharacter(string read[]) {
-    pageNo = stoi(read[0]);
-    lineNo = stoi(read[1]);
-    index = stoi(read[2]);
-    character = read[3][0];
+    pageNo = stoi(read[0]); // Convert to integer
+    lineNo = stoi(read[1]); // Convert to integer
+    index = stoi(read[2]); // Convert to integer
+    character = read[3][0]; // Get the character
     
+    // Key (pppLLii)
     key = index;
     key += lineNo*100;
     key += pageNo*10000;

@@ -23,7 +23,6 @@ private:
 public:
     List();
     void insert(const BookCharacter& newCharacter);
-    void deleteItem(const BookCharacter& deleteCharacter);
     char lookup(const BookCharacter& lookUpCharacter) const;
 };
 

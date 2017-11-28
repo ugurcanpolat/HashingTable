@@ -11,26 +11,17 @@
 #include "p3list.h"
 
 List::List() {
-    characters.resize(SIZE);
+    characters.resize(SIZE); // Define the size of the container
 }
 
 void List::insert(const BookCharacter& newCharacter) {
     characters.push_back(newCharacter);
 }
 
-void List::deleteItem(const BookCharacter& deleteCharacter) {
-    for(int counter = 0; counter < characters.capacity(); counter++) {
-        if(characters[counter].getKey() == deleteCharacter.getKey()) {
-            BookCharacter empty;
-            characters[counter] = empty;
-        }
-    }
-}
-
 char List::lookup(const BookCharacter& lookUpCharacter) const {
-    for(int counter = 0; counter < characters.capacity(); counter++) {
-        if(characters[counter].getKey() == lookUpCharacter.getKey())
-            return characters[counter].getCharacter();
+    for(int counter = 0; counter < characters.size(); counter++) {
+        if(characters[counter].getKey() == lookUpCharacter.getKey()) // Found
+            return characters[counter].getCharacter(); // Return the character
     }
-    return '\0';
+    return '\0'; // Not found
 }
