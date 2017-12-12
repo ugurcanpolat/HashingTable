@@ -21,7 +21,7 @@ Dictionary::~Dictionary() {
 unsigned long Dictionary::hashing(unsigned long key) const {
     // h(key) = SIZE * (key * 0,618) (mod 1)
     double redundant; // unnecessary integer part
-    double hash = key * 0.618;
+    double hash = key * 0.61803398875;
     hash = modf(hash, &redundant); // (mod 1) = fraction part
     hash *= SIZE;
     return static_cast<unsigned long>(hash);
